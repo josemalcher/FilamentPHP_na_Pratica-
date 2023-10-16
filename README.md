@@ -1,4 +1,4 @@
-# FilamentPHP na Prática
+# FilamentPHP na Prática v2
 
 https://codeexperts.com.br/
 
@@ -47,7 +47,18 @@ https://codeexperts.com.br/
 
 ## <a name="parte1">1 - 1. Primeiros Passos</a>
 
+https://filamentphp.com/docs/2.x/admin/installation
 
+```
+
+ sail composer require filament/filament:"^2.17.4"
+
+
+```
+
+```
+
+```
 
 [Voltar ao Índice](#indice)
 
@@ -82,6 +93,58 @@ https://codeexperts.com.br/
 
 
 ## <a name="parte5">5 - 04 - Iniciando Primeiro Recurso</a>
+
+```
+sail php artisan make:model                
+ ┌ What should the model be named? ─────────────────────────────┐
+ │ Product                                                      │
+ └──────────────────────────────────────────────────────────────┘
+
+ ┌ Would you like any of the following? ────────────────────────┐
+ │ Factory                                                      │
+ │ Migration                                                    │
+ └──────────────────────────────────────────────────────────────┘
+
+   INFO  Model [app/Models/Product.php] created successfully.
+
+   INFO  Factory [database/factories/ProductFactory.php] created successfully.  
+
+   INFO  Migration [database/migrations/2023_10_16_211510_create_products_table.php] created successfully.
+
+```
+
+```
+sail php artisan make:filament-resource ProductResource
+
+```
+
+```php
+ public function up(): void
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('nome');
+            $table->string('description')->nullable();
+            $table->integer('price');
+            $table->integer('amount');
+
+            $table->string('slug');
+
+            $table->timestamps();
+        });
+    }
+```
+
+```
+ sail php artisan migrate
+
+   INFO  Running migrations.
+
+  2023_10_16_211510_create_products_table ................ 34ms DONE
+
+
+```
 
 
 
