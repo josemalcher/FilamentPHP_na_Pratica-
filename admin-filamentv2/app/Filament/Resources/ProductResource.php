@@ -6,6 +6,7 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -24,7 +25,12 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('nome')->label('Nome Produto'),
+                TextInput::make('description')->label('Descrição do  Produto'),
+                TextInput::make('price')->label('Valor'),
+                TextInput::make('amount')->label('Quantidade'),
+                TextInput::make('slug'),
+
             ]);
     }
 
