@@ -270,6 +270,33 @@ class ProductResource extends Resource
 
 ## <a name="parte12">12 - 10 - Introdução</a>
 
+```
+ sail php artisan make:migration alter_table_add_colum_photo --table=products            
+
+   INFO  Migration [database/migrations/2023_10_17_204644_alter_table_add_colum_photo.php] create
+```
+
+```
+sail php artisan make:model Category -mfs
+
+   INFO  Model [app/Models/Category.php] created successfully.
+
+   INFO  Factory [database/factories/CategoryFactory.php] created successfully.
+
+   INFO  Migration [database/migrations/2023_10_17_204807_create_categories_table.php] created successfully.
+
+   INFO  Seeder [database/seeders/CategorySeeder.php] created successfully.
+
+```
+
+```
+ sail php artisan make:migration create_category_product_table
+
+   INFO  Migration [database/migrations/2023_10_17_205211_create_category_product_table.php] created successfully.
+
+```
+
+
 
 
 [Voltar ao Índice](#indice)
