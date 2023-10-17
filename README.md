@@ -173,7 +173,18 @@ sail php artisan make:filament-resource ProductResource
 
 ## <a name="parte8">8 - 07 - Trabalhando com Mutate na Criação</a>
 
+```php
+class CreateProduct extends CreateRecord
+{
+    protected static string $resource = ProductResource::class;
 
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['price'] = ((float) str_replace(['.', ','], ['', '.'], $data['price'])) * 100;
+        return $data;
+    }
+}
+```
 
 [Voltar ao Índice](#indice)
 
