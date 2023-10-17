@@ -227,7 +227,32 @@ class EditProduct extends EditRecord
 
 ## <a name="parte10">10 - 09 - Manipulando Slug Dinâmico</a>
 
+```php
+class ProductResource extends Resource
+{
+    protected static ?string $model = Product::class;
 
+    protected static ?string $navigationIcon = 'heroicon-o-collection';
+
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                TextInput::make('nome')
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, $set) {
+                        $state = Str::slug($state);
+                        $set('slug', $state);
+                    })
+                    ->label('Nome Produto'),
+                TextInput::make('description')->label('Descrição do  Produto'),
+                TextInput::make('price')->label('Valor'),
+                TextInput::make('amount')->label('Quantidade'),
+                TextInput::make('slug')->disabled(),
+
+            ]);
+    }
+```
 
 [Voltar ao Índice](#indice)
 
